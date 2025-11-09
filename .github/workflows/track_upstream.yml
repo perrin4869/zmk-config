@@ -1,0 +1,24 @@
+name: upstream to PR
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  autoupdate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: fopina/upstream-to-pr@v1
+        with:
+          # this is needed for workflows to be dispatched for PRs created via this action
+          # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow?utm_source=chatgpt.com#triggering-a-workflow-from-a-workflow
+          token: ${{ secrets.PAT }}
+          upstream-repository: https://github.com/zmkfirmware/unified-zmk-config-template.git
+          upstream-branch: main
+
