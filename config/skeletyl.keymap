@@ -86,7 +86,7 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   ;   |   q   |   j   |   k   |   x   |                                  |   b   |   m   |   w   |   v   |   z   |
  * '-----------------------------------------------------------,  ,---------------------------------------------------'
- *                                 |  ESC  | ENTER | TAB+RAISE |  | DEL+LOWER | SPACE |  BS   |
+ *                                 |  ESC  | ENTER+RAISE | TAB |  | DEL | SPACE+LOWER|  BS   |
  *                                 '---------------------------'  '---------------------------'
  */
 
@@ -95,7 +95,7 @@
     &kp SQT        &kp COMMA      &kp DOT        &kp P          &kp Y          &kp F          &kp G           &kp C          &kp R          &kp L
     &hm LSHFT A    &hm LALT O     &hm LGUI E     &hm LCTRL U    &hm RALT I     &hm RALT D     &hm RCTRL H     &hm RGUI T     &hm LALT N     &hm RSHFT S
     &kp SEMI       &kp Q          &kp J          &kp K          &kp X          &kp B          &kp M           &kp W          &kp V          &kp Z
-                                  &kp ESC        &kp RET        &lt RAISE TAB  &lt LOWER DEL  &kp SPACE       &kp BSPC
+                                  &kp ESC        &lt RAISE RET  &kp TAB        &kp DEL        &lt LOWER SPACE &kp BSPC
             >;
         };
 
@@ -116,7 +116,7 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   F1  |  F2   |  F3   |  F4   |  F5   |                                  |   F6  |  F7   |  F8   |  F9   |  F10  |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 | F11   | F12   |       |  |VOL_UP | MUTE  |VOL_DN |
+ *                                 | F11   |       | F12   |  |VOL_UP | MUTE  |VOL_DN |
  *                                 '-----------------------'  '-----------------------'
  */
 
@@ -125,7 +125,7 @@
     &kp PGUP       &kp PGDN       &mmv MOVE_UP   &kp DEL        &kp INSERT     &kp LBRC       &kp RBRC       &kp UP         &kp LBKT       &kp RBKT
     &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &kp QMARK      &kp LEFT       &kp DOWN       &kp RIGHT      &mkp MCLK
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
-                                  &kp F11        &kp F12        &trans         &kp K_VOL_UP   &kp K_MUTE     &kp K_VOL_DN
+                                  &kp F11        &trans         &kp F12        &kp K_VOL_UP   &kp K_MUTE     &kp K_VOL_DN
             >;
         };
 
@@ -137,7 +137,7 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   !   |   @   |   #   |   $   |   %   |                                  |   ^   |   &   |   *   |   (   |   )   |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 | PREV  | PP    | NEXT  |  |       | HOME  | END   |
+ *                                 | PREV  | PP    | NEXT  |  | HOME  |       | END   |
  *                                 '-----------------------'  '-----------------------'
  */
 
@@ -146,7 +146,7 @@
     &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp PIPE       &kp FSLH       &kp BSLH       &kp GRAVE       &kp TILDE      &trans
     &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7         &kp N8          &kp N9         &kp N0
     &kp EXCL       &kp AT         &kp HASH       &kp DLLR       &kp PRCNT      &kp CARET      &kp AMPS       &kp ASTRK       &kp LPAR       &kp RPAR
-                                  &kp K_PREV     &kp K_PP       &kp K_NEXT     &trans         &kp HOME       &kp END
+                                  &kp K_PREV     &kp K_PP       &kp K_NEXT     &kp HOME       &trans         &kp END
             >;
         };
 
