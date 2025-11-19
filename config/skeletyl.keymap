@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/outputs.h>
 
 // Modified keymap based on personal experience, with some improvements based on Miryoku layout.
@@ -85,23 +86,23 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   ;   |   q   |   j   |   k   |   x   |                                  |   b   |   m   |   w   |   v   |   z   |
  * '-----------------------------------------------------------,  ,---------------------------------------------------'
- *                                 |  ESC  |  BS   | TAB+RAISE |  | DEL+LOWER | SPACE | ENTER |
+ *                                 |  ESC  | ENTER | TAB+RAISE |  | DEL+LOWER | SPACE |  BS   |
  *                                 '---------------------------'  '---------------------------'
  */
 
         dvorak {
             bindings = <
     &kp SQT        &kp COMMA      &kp DOT        &kp P          &kp Y          &kp F          &kp G           &kp C          &kp R          &kp L
-    &hm LSHFT A    &hm LALT O     &hm LGUI E     &hm LCTRL U    &kp I          &kp D          &hm LCTRL H     &hm LGUI T     &hm LALT N     &hm LSHFT S
+    &hm LSHFT A    &hm LALT O     &hm LGUI E     &hm LCTRL U    &hm RALT I     &hm RALT D     &hm RCTRL H     &hm RGUI T     &hm LALT N     &hm RSHFT S
     &kp SEMI       &kp Q          &kp J          &kp K          &kp X          &kp B          &kp M           &kp W          &kp V          &kp Z
-                                  &kp ESC        &kp BSPC       &lt RAISE TAB  &lt LOWER DEL  &kp SPACE       &kp RET
+                                  &kp ESC        &kp RET        &lt RAISE TAB  &lt LOWER DEL  &kp SPACE       &kp BSPC
             >;
         };
 
         qwerty {
             bindings = <
     &kp Q          &kp W          &kp E          &kp R          &kp T          &kp Y          &kp U           &kp I          &kp O          &kp P
-    &hm LSHFT A    &hm LALT S     &hm LGUI D     &hm LCTRL F    &kp G          &kp H          &hm LCTRL J     &hm LGUI K     &hm LALT L     &hm LSHFT SQT
+    &hm LSHFT A    &hm LALT S     &hm LGUI D     &hm LCTRL F    &hm RALT G     &hm RALT H     &hm LCTRL J     &hm LGUI K     &hm LALT L     &hm LSHFT SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B          &kp N          &kp M           &kp COMMA      &kp DOT        &kp FSLH
                                   &trans         &trans         &trans         &trans         &trans         &trans
             >;
@@ -109,22 +110,22 @@
 
  /* Raise
  * ,---------------------------------------,                                  ,---------------------------------------,
- * |   F1  |  F2   |  F3   |  F4   |  F5   |                                  |  PGUP |  HOME |  up   |  END  |  DEL  |
+ * | PGUP  | PGDN  | MUP   | DELETE|INSERT |                                  |   {   |   }   |  up   |   [   |   ]   |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
- * |   F6  |  F7   |  F8   |  F9   |  F10  |                                  |  PGDN |  left |  down | right |  TAB  |
+ * | LCLK  | MLEFT | MDOWN | MRIGHT| RCLK  |                                  |   ?   |  left |  down | right | MCLK  |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
- * |  F11  |  F12  |       |       |       |                                  |   {   |   [   |   ?   |   ]   |   }   |
+ * |   F1  |  F2   |  F3   |  F4   |  F5   |                                  |   F6  |  F7   |  F8   |  F9   |  F10  |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 |       |       |       |  |       |       |       |
+ *                                 | F11   | F12   |       |  |VOL_UP | MUTE  |VOL_DN |
  *                                 '-----------------------'  '-----------------------'
  */
 
         raise_layer {
             bindings = <
-    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp PG_UP      &kp HOME       &kp UP          &kp END        &kp DEL
-    &kp F6         &kp F7         &kp F8         &kp F9         &kp F10        &kp PG_DN      &kp LEFT       &kp DOWN        &kp RIGHT      &kp TAB
-    &kp F11        &kp F12        &trans         &trans         &trans         &kp LBRC       &kp LBKT       &kp QMARK       &kp RBKT       &kp RBRC
-                                  &trans         &trans         &trans         &trans         &trans         &trans
+    &kp PGUP       &kp PGDN       &mmv MOVE_UP   &kp DEL        &kp INSERT     &kp LBRC       &kp RBRC       &kp UP         &kp LBKT       &kp RBKT
+    &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &kp QMARK      &kp LEFT       &kp DOWN       &kp RIGHT      &mkp MCLK
+    &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
+                                  &kp F11        &kp F12        &trans         &kp K_VOL_UP   &kp K_MUTE     &kp K_VOL_DN
             >;
         };
 
@@ -136,7 +137,7 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   !   |   @   |   #   |   $   |   %   |                                  |   ^   |   &   |   *   |   (   |   )   |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 |       |       |       |  |       |       |       |
+ *                                 | PREV  | PP    | NEXT  |  |       | HOME  | END   |
  *                                 '-----------------------'  '-----------------------'
  */
 
@@ -145,7 +146,7 @@
     &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp PIPE       &kp FSLH       &kp BSLH       &kp GRAVE       &kp TILDE      &trans
     &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7         &kp N8          &kp N9         &kp N0
     &kp EXCL       &kp AT         &kp HASH       &kp DLLR       &kp PRCNT      &kp CARET      &kp AMPS       &kp ASTRK       &kp LPAR       &kp RPAR
-                                  &trans         &trans         &trans         &trans         &trans         &trans
+                                  &kp K_PREV     &kp K_PP       &kp K_NEXT     &trans         &kp HOME       &kp END
             >;
         };
 
