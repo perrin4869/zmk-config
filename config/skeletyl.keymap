@@ -84,9 +84,9 @@
  * |   a   |   o   |   e   |   u   |   i   |                                  |   d   |   h   |   t   |   n   |   s   |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   ;   |   q   |   j   |   k   |   x   |                                  |   b   |   m   |   w   |   v   |   z   |
- * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 |  ESC  |  BS   | RAISE |  | LOWER | SPACE | ENTER |
- *                                 '-----------------------'  '-----------------------'
+ * '-----------------------------------------------------------,  ,---------------------------------------------------'
+ *                                 |  ESC  |  BS   | TAB+RAISE |  | DEL+LOWER | SPACE | ENTER |
+ *                                 '---------------------------'  '---------------------------'
  */
 
         dvorak {
@@ -94,7 +94,7 @@
     &kp SQT        &kp COMMA      &kp DOT        &kp P          &kp Y          &kp F          &kp G           &kp C          &kp R          &kp L
     &hm LSHFT A    &hm LALT O     &hm LGUI E     &hm LCTRL U    &kp I          &kp D          &hm LCTRL H     &hm LGUI T     &hm LALT N     &hm LSHFT S
     &kp SEMI       &kp Q          &kp J          &kp K          &kp X          &kp B          &kp M           &kp W          &kp V          &kp Z
-                                  &kp ESC        &kp BSPC       &mo RAISE      &mo LOWER      &kp SPACE       &kp RET
+                                  &kp ESC        &kp BSPC       &lt RAISE TAB  &lt LOWER DEL  &kp SPACE       &kp RET
             >;
         };
 
