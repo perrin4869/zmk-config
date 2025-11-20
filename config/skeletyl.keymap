@@ -131,9 +131,9 @@
         raise_layer {
             bindings = <
     &kp PGUP       &kp PGDN       &mmv MOVE_UP   &kp DEL        &kp INSERT     &kp LBRC       &kp RBRC       &kp UP         &kp K_VOL_DN   &kp K_VOL_UP
-    &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &kp QMARK      &kp LEFT       &kp DOWN       &kp RIGHT      &mkp K_MUTE
+    &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &kp QMARK      &kp LEFT       &kp DOWN       &kp RIGHT      &kp K_MUTE
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
-                                  &kp F11        &trans         &kp F12        &kp MCLK       &kp LBKT       &kp RBKT
+                                  &kp F11        &trans         &kp F12        &mkp MCLK      &kp LBKT       &kp RBKT
             >;
         };
 
