@@ -142,7 +142,7 @@
         raise_layer {
             bindings = <
     &kp PGUP       &kp PGDN       &mmv MOVE_UP   &mkp MCLK      &kp INSERT     &kp LBRC       &kp RBRC       &kp UP         &kp K_VOL_DN   &kp K_VOL_UP
-    &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &kp QMARK      &kp LEFT       &kp DOWN       &kp RIGHT      &kp K_MUTE
+    &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &hmr RALT QMARK&hmr RCTRL LEFT&hmr RGUI DOWN &hmr LALT RIGHT&hmr RSHFT K_MUTE
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
                                   &mt LALT F11   &trans         &mt LGUI F12   &caps_word     &kp LBKT       &mt LCTRL RBKT
             >;
@@ -163,7 +163,7 @@
         lower_layer {
             bindings = <
     &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp PIPE       &kp BSLH       &kp FSLH       &kp GRAVE       &kp TILDE      &bootloader
-    &kp N1         &kp N2         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7         &kp N8          &kp N9         &kp N0
+    &hml LSHFT N1  &hml LALT N2   &hml LGUI N3   &hml LCTRL N4  &hml RALT N5   &hmr RALT N6   &hmr RCTRL N7  &hmr RGUI N8    &hmr LALT N9   &hmr RSHFT N0
     &kp EXCL       &kp AT         &kp HASH       &kp DLLR       &kp PRCNT      &kp CARET      &kp AMPS       &kp ASTRK       &kp LPAR       &kp RPAR
                                   &mt LALT K_PREV&kp K_PP       &mt LGUI K_NEXT&mt RSHFT HOME &trans         &mt RCTRL END
             >;
