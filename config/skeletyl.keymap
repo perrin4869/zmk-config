@@ -135,7 +135,7 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   F1  |  F2   |  F3   |  F4   |  F5   |                                  |   F6  |  F7   |  F8   |  F9   |  F10  |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 | F11   |       | F12   |  | DEL   |   [   |   ]   |
+ *                                 | F11   |       | F12   |  |   [  |  CAPS  |   ]   |
  *                                 '-----------------------'  '-----------------------'
  */
 
@@ -144,7 +144,7 @@
     &kp PGUP       &kp PGDN       &mmv MOVE_UP   &mkp MCLK      &kp INSERT     &kp LBRC       &kp RBRC       &kp UP         &kp K_VOL_DN   &kp K_VOL_UP
     &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &hmr RALT QMARK&hmr RCTRL LEFT&hmr RGUI DOWN &hmr LALT RIGHT&hmr RSHFT K_MUTE
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
-                                  &mt LALT F11   &trans         &mt LGUI F12   &caps_word     &kp LBKT       &mt LCTRL RBKT
+                                  &mt LALT F11   &trans         &mt LGUI F12   &mt RSHFT LBKT &caps_word     &mt LCTRL RBKT
             >;
         };
 
