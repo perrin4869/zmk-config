@@ -11,8 +11,11 @@
 #define QWERTY  1
 #define RAISE   2
 #define LOWER   3
+#define MOUSE   4
 
 #define QUICK_TAP_MS 175
+
+#define SCRNSVR K_SCREENSAVER
 
 &mt {
     quick-tap-ms = <QUICK_TAP_MS>;
@@ -32,7 +35,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <RM0 RM1 RM2 RM3 RM4 RH0 RH1 RH2>; // List of keys on the right side of the keyboard
+            hold-trigger-key-positions = <RM1 RM2 RM3 RM4 RH0 RH1 RH2>; // List of keys on the right side of the keyboard
             hold-trigger-on-release;
         };
         hmr: home_row_mod_right {
@@ -43,10 +46,18 @@
             tapping-term-ms = <QUICK_TAP_MS>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <LM0 LM1 LM2 LM3 LM4 LH0 LH1 LH2>; // List of keys on the left side of the keyboard
+            hold-trigger-key-positions = <LM1 LM2 LM3 LM4 LH0 LH1 LH2>; // List of keys on the left side of the keyboard
             hold-trigger-on-release;
         };
 
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <RAISE LOWER>;
+            then-layer = <MOUSE>;
+        };
     };
 
     combos {
@@ -58,6 +69,15 @@
             key-positions = <RT1 RT2 RT3>;
             bindings = <&tog QWERTY>;
         };
+
+        // conditional layers can only be triggered via the layers
+        // would need to duplicate the layer to get the trigger mode too
+
+        // combo_tg_mouse {
+        //     timeout-ms = <50>;
+        //     key-positions = <LT1 LT2 LT3>;
+        //     bindings = <&tog MOUSE>;
+        // };
 
         // Combo for toggling output
         combo_tg_output {
@@ -112,16 +132,16 @@
         dvorak {
             bindings = <
     &kp SQT        &kp COMMA      &kp DOT        &kp P          &kp Y          &kp F          &kp G           &kp C          &kp R          &kp L
-    &hml LSHFT A   &hml LALT O    &hml LGUI E    &hml LCTRL U   &hml RALT I    &hmr RALT D    &hmr RCTRL H    &hmr RGUI T    &hmr LALT N    &hmr RSHFT S
+    &hml LSHFT A   &hml LALT O    &hml LGUI E    &hml LCTRL U   &kp I          &kp D          &hmr RCTRL H    &hmr RGUI T    &hmr LALT N    &hmr RSHFT S
     &kp SEMI       &kp Q          &kp J          &kp K          &kp X          &kp B          &kp M           &kp W          &kp V          &kp Z
-                                  &mt LALT ESC   &lt RAISE RET  &mt LGUI TAB   &mt RSHFT DEL  &lt LOWER SPACE &mt RCTRL BSPC
+                                  &mt LALT ESC   &lt RAISE RET  &mt LGUI TAB   &mt RSHFT RALT &lt LOWER SPACE &mt RCTRL BSPC
             >;
         };
 
         qwerty {
             bindings = <
     &kp Q          &kp W          &kp E          &kp R          &kp T          &kp Y          &kp U           &kp I          &kp O          &kp P
-    &hml LSHFT A   &hml LALT S    &hml LGUI D    &hml LCTRL F   &hml RALT G    &hmr RALT H    &hmr LCTRL J    &hmr LGUI K    &hmr LALT L    &hmr LSHFT SQT
+    &hml LSHFT A   &hml LALT S    &hml LGUI D    &hml LCTRL F   &kp G          &kp H          &hmr LCTRL J    &hmr LGUI K    &hmr LALT L    &hmr LSHFT SQT
     &kp Z          &kp X          &kp C          &kp V          &kp B          &kp N          &kp M           &kp COMMA      &kp DOT        &kp FSLH
                                   &trans         &trans         &trans         &trans         &trans          &trans
             >;
@@ -129,22 +149,22 @@
 
  /* Raise
  * ,---------------------------------------,                                  ,---------------------------------------,
- * | PGUP  | PGDN  | MUP   | MCLK  |INSERT |                                  |   {   |   }   |  up   |VOL_DN |VOL_UP |
+ * | PGUP  | PGDN  |  up   |  DEL  |INSERT |                                  | HOME  |  END  |SCRNSVR|  F11  |  F12  |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
- * | LCLK  | MLEFT | MDOWN | MRIGHT| RCLK  |                                  |   ?   |  left |  down | right | MUTE  |
+ * | PSCRN |  left |  down | right | CAPS  |                                  |   ?   |   [   |   ]   |   {   |   }   |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   F1  |  F2   |  F3   |  F4   |  F5   |                                  |   F6  |  F7   |  F8   |  F9   |  F10  |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 | F11   |       | F12   |  |   [  |  CAPS  |   ]   |
+ *                                 |       |       |       |  |VOL_DN|  MUTE  |VOL_UP |
  *                                 '-----------------------'  '-----------------------'
  */
 
         raise_layer {
             bindings = <
-    &kp PGUP       &kp PGDN       &mmv MOVE_UP   &mkp MCLK      &kp INSERT     &kp LBRC       &kp RBRC       &kp UP         &kp K_VOL_DN   &kp K_VOL_UP
-    &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT&mkp RCLK      &hmr RALT QMARK&hmr RCTRL LEFT&hmr RGUI DOWN &hmr LALT RIGHT&hmr RSHFT K_MUTE
+    &kp PGUP       &kp PGDN       &kp  UP        &kp  DEL       &kp INSERT     &kp HOME       &kp END        &kp SCRNSVR    &kp F11        &kp F12
+    &hml LSHFT PSCRN&hml LALT LEFT&hml LGUI DOWN &hml LCTRL RIGHT&caps_word    &kp QMARK      &hmr RCTRL LBKT&hmr RGUI RBKT &hmr LALT LBRC &hmr RSHFT RBRC
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
-                                  &mt LALT F11   &trans         &mt LGUI F12   &mt RSHFT LBKT &caps_word     &mt LCTRL RBKT
+                                  &kp LALT       &trans         &kp LGUI       &mt LCTRL K_VOL_DN&lt LOWER K_MUTE&mt LCTRL K_VOL_UP
             >;
         };
 
@@ -156,18 +176,38 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   !   |   @   |   #   |   $   |   %   |                                  |   ^   |   &   |   *   |   (   |   )   |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 | PREV  | PP    | NEXT  |  | HOME  |       | END   |
+ *                                 | PREV  | PP    | NEXT  |  |       |       |       |
  *                                 '-----------------------'  '-----------------------'
  */
 
         lower_layer {
             bindings = <
     &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp PIPE       &kp BSLH       &kp FSLH       &kp GRAVE       &kp TILDE      &bootloader
-    &hml LSHFT N1  &hml LALT N2   &hml LGUI N3   &hml LCTRL N4  &hml RALT N5   &hmr RALT N6   &hmr RCTRL N7  &hmr RGUI N8    &hmr LALT N9   &hmr RSHFT N0
+    &hml LSHFT N1  &hml LALT N2   &hml LGUI N3   &hml LCTRL N4  &kp N5         &kp N6         &hmr RCTRL N7  &hmr RGUI N8    &hmr LALT N9   &hmr RSHFT N0
     &kp EXCL       &kp AT         &kp HASH       &kp DLLR       &kp PRCNT      &kp CARET      &kp AMPS       &kp ASTRK       &kp LPAR       &kp RPAR
-                                  &mt LALT K_PREV&kp K_PP       &mt LGUI K_NEXT&mt RSHFT HOME &trans         &mt RCTRL END
+                                  &mt LALT K_PREV&lt RAISE K_PP &mt LGUI K_NEXT&kp RSHFT      &trans         &kp RCTRL
             >;
         };
 
+ /* Mouse
+ * ,---------------------------------------,                                  ,---------------------------------------,
+ * |       |       |       |       |       |                                  |       |       | MUP   |       |       |
+ * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
+ * |       |       |       |       |       |                                  | LCLK  | MLEFT | MDOWN | MRIGHT| RCLK  |
+ * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
+ * |       |       |       |       |       |                                  |       |       | MCLK  |       |       |
+ * '-------------------------------------------------------,  ,-------------------------------------------------------'
+ *                                 |       |       |       |  |       |       |       |
+ *                                 '-----------------------'  '-----------------------'
+ */
+
+        mouse_layer {
+            bindings = <
+    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &mmv MOVE_UP    &trans         &trans
+    &trans         &trans         &trans    &trans    &trans         &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT&mkp RCLK
+    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &mkp MCLK       &trans         &trans
+                                  &trans    &trans    &trans         &trans         &trans         &trans
+            >;
+        };
     };
 };
