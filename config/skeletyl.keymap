@@ -7,11 +7,12 @@
 
 // Modified keymap based on personal experience, with some improvements based on Miryoku layout.
 
-#define DVORAK  0
-#define QWERTY  1
-#define RAISE   2
-#define LOWER   3
-#define MOUSE   4
+#define DVORAK      0
+#define QWERTY      1
+#define RAISE       2
+#define LOWER       3
+#define MOUSE       4
+#define MOUSE_COND  5
 
 #define QUICK_TAP_MS 175
 
@@ -56,7 +57,7 @@
         compatible = "zmk,conditional-layers";
         tri_layer {
             if-layers = <RAISE LOWER>;
-            then-layer = <MOUSE>;
+            then-layer = <MOUSE_COND>;
         };
     };
 
@@ -70,14 +71,11 @@
             bindings = <&tog QWERTY>;
         };
 
-        // conditional layers can only be triggered via the layers
-        // would need to duplicate the layer to get the trigger mode too
-
-        // combo_tg_mouse {
-        //     timeout-ms = <50>;
-        //     key-positions = <LT1 LT2 LT3>;
-        //     bindings = <&tog MOUSE>;
-        // };
+        combo_tg_mouse {
+            timeout-ms = <50>;
+            key-positions = <LT1 LT2 LT3>;
+            bindings = <&tog MOUSE>;
+        };
 
         // Combo for toggling output
         combo_tg_output {
@@ -193,9 +191,9 @@
  * ,---------------------------------------,                                  ,---------------------------------------,
  * |       |       |       |       |       |                                  |       |       | MUP   |       |       |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
- * |       |       |       |       |       |                                  | LCLK  | MLEFT | MDOWN | MRIGHT| RCLK  |
+ * |       | LCLK  | MCLK  | RCLK  |       |                                  |       | MLEFT | MDOWN | MRIGHT|       |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
- * |       |       |       |       |       |                                  |       |       | MCLK  |       |       |
+ * |       |       |       |       |       |                                  |       |       |       |       |       |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
  *                                 |       |       |       |  |       |       |       |
  *                                 '-----------------------'  '-----------------------'
@@ -203,9 +201,30 @@
 
         mouse_layer {
             bindings = <
-    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &mmv MOVE_UP    &trans         &trans
-    &trans         &trans         &trans    &trans    &trans         &mkp LCLK      &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT&mkp RCLK
-    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &mkp MCLK       &trans         &trans
+    &none          &none          &none     &none     &none          &none          &none          &mmv MOVE_UP    &none          &none
+    &none          &mkp LCLK      &mkp MCLK &mkp RCLK &none          &none          &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT&none
+    &none          &none          &none     &none     &none          &none          &none          &none           &none          &none
+                                  &none     &none     &none          &none          &none          &none
+            >;
+        };
+
+ /* Mouse Toggle
+ * ,---------------------------------------,                                  ,---------------------------------------,
+ * |       |       |       |       |       |                                  |       |       | MUP   |       |       |
+ * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
+ * |       | LCLK  | MCLK  | RCLK  |       |                                  |       | MLEFT | MDOWN | MRIGHT|       |
+ * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
+ * |       |       |       |       |       |                                  |       |       |       |       |       |
+ * '-------------------------------------------------------,  ,-------------------------------------------------------'
+ *                                 |       |       |       |  |       |       |       |
+ *                                 '-----------------------'  '-----------------------'
+ */
+
+        mouse_cond_layer {
+            bindings = <
+    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &trans          &trans         &trans
+    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &trans          &trans         &trans
+    &trans         &trans         &trans    &trans    &trans         &trans         &trans         &trans          &trans         &trans
                                   &trans    &trans    &trans         &trans         &trans         &trans
             >;
         };
