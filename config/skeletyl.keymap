@@ -14,6 +14,7 @@
 #define MOUSE       4
 #define MOUSE_COND  5
 
+#define TAPPING_TERM_MS 280
 #define QUICK_TAP_MS 175
 
 #define SCRNSVR K_SCREENSAVER
@@ -39,7 +40,7 @@
             #binding-cells = <2>;
             flavor = "balanced";
             require-prior-idle-ms = <150>;
-            tapping-term-ms = <280>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
             quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <RM1 RM2 RM3 RM4 RH0 RH1 RH2>; // List of keys on the right side of the keyboard
@@ -50,8 +51,8 @@
             #binding-cells = <2>;
             flavor = "balanced";
             require-prior-idle-ms = <150>;
-            tapping-term-ms = <QUICK_TAP_MS>;
-            quick-tap-ms = <175>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <LM1 LM2 LM3 LM4 LH0 LH1 LH2>; // List of keys on the left side of the keyboard
             hold-trigger-on-release;
@@ -130,7 +131,7 @@
  * |   ;   |   q   |   j   |   k   |   x   |                                  |   b   |   m   |   w   |   v   |   z   |
  * '-----------------------------------------------------------,  ,---------------------------------------------------'
  *                                 |  ESC  | ENTER+RAISE | TAB |  | DEL | SPACE+LOWER|  BS   |
- *                                 '---------------------------'  '---------------------------'
+ *                                 '---------------------------'  '--------------------------'
  */
 
         dvorak {
