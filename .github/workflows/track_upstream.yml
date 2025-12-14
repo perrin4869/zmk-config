@@ -22,4 +22,3 @@ jobs:
           token: ${{ secrets.PAT }}
           upstream-repository: https://github.com/zmkfirmware/unified-zmk-config-template.git
           upstream-branch: main
-          reviewers: ${{ github.actor }}
