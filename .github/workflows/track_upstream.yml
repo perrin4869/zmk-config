@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          token: ${{ secrets.PAT }}
           fetch-depth: 0
 
       - uses: fopina/upstream-to-pr@v1
@@ -21,4 +22,4 @@ jobs:
           token: ${{ secrets.PAT }}
           upstream-repository: https://github.com/zmkfirmware/unified-zmk-config-template.git
           upstream-branch: main
-
+          reviewers: ${{ github.actor }}
