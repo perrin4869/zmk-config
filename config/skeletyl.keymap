@@ -130,7 +130,7 @@
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   ;   |   q   |   j   |   k   |   x   |                                  |   b   |   m   |   w   |   v   |   z   |
  * '-----------------------------------------------------------,  ,---------------------------------------------------'
- *                                 |  ESC  | ENTER+RAISE | TAB |  | DEL | SPACE+LOWER|  BS   |
+ *                                 |  ESC  | ENTER+RAISE | TAB |  | RALT| SPACE+LOWER |  BS  |
  *                                 '---------------------------'  '--------------------------'
  */
 
@@ -175,7 +175,7 @@
 
  /* Lower
  * ,---------------------------------------,                                  ,---------------------------------------,
- * |   =   |   +   |   -   |   _   |   |   |                                  |   \   |   /   |   `   |   ~   | RESET |
+ * |   =   |   +   |   -   |   _   |   ~   |                                  |   \   |   /   |   |   |   `   | RESET |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
  * |   1   |   2   |   3   |   4   |   5   |                                  |   6   |   7   |   8   |   9   |   0   |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
@@ -187,7 +187,7 @@
 
         lower_layer {
             bindings = <
-    &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp PIPE       &kp BSLH       &kp FSLH       &kp GRAVE       &kp TILDE      &bootloader
+    &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp TILDE      &kp BSLH       &kp FSLH       &kp PIPE        &kp GRAVE      &bootloader
     &hml LSHFT N1  &hml LALT N2   &hml LGUI N3   &hml LCTRL N4  &kp N5         &kp N6         &hmr RCTRL N7  &hmr RGUI N8    &hmr LALT N9   &hmr RSHFT N0
     &kp EXCL       &kp AT         &kp HASH       &kp DLLR       &kp PRCNT      &kp CARET      &kp AMPS       &kp ASTRK       &kp LPAR       &kp RPAR
                                   &mt LALT K_PREV&lt RAISE K_PP &mt LGUI K_NEXT&kp RSHFT      &trans         &kp RCTRL
