@@ -154,9 +154,9 @@
 
  /* Raise
  * ,---------------------------------------,                                  ,---------------------------------------,
- * | PGUP  | PGDN  |  up   |  DEL  |INSERT |                                  | HOME  |  END  |SCRNSVR|  F11  |  F12  |
+ * | PGUP  | PGDN  |  up   |  DEL  |INSERT |                                  | HOME  |  END  | CAPS  |  F11  |  F12  |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
- * | PSCRN |  left |  down | right | CAPS  |                                  |   ?   |   [   |   ]   |   {   |   }   |
+ * | PSCRN |  left |  down | right |SCRNSVR|                                  |   ?   |   [   |   ]   |   {   |   }   |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   F1  |  F2   |  F3   |  F4   |  F5   |                                  |   F6  |  F7   |  F8   |  F9   |  F10  |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
@@ -166,8 +166,8 @@
 
         raise_layer {
             bindings = <
-    &kp PGUP       &kp PGDN       &kp  UP        &kp  DEL       &kp INSERT     &kp HOME       &kp END        &kp SCRNSVR    &kp F11        &kp F12
-    &hml LSHFT PSCRN&hml LALT LEFT&hml LGUI DOWN &hml LCTRL RIGHT&caps_word    &kp QMARK      &hmr RCTRL LBKT&hmr RGUI RBKT &hmr LALT LBRC &hmr RSHFT RBRC
+    &kp PGUP       &kp PGDN       &kp  UP        &kp  DEL       &kp INSERT     &kp HOME       &kp END        &caps_word    &kp F11        &kp F12
+    &hml LSHFT PSCRN&hml LALT LEFT&hml LGUI DOWN &hml LCTRL RIGHT&kp SCRNSVR   &kp QMARK      &hmr RCTRL LBKT&hmr RGUI RBKT &hmr LALT LBRC &hmr RSHFT RBRC
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
                                   &kp LALT       &trans         &kp LGUI       &mt LCTRL K_VOL_DN&lt LOWER K_MUTE&mt LCTRL K_VOL_UP
             >;
