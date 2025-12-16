@@ -14,7 +14,9 @@
 #define MOUSE       4
 #define MOUSE_COND  5
 
-#define TAPPING_TERM_MS 280
+#define REQUIRE_PRIOR_IDLE_MS 150
+/* the default value of 280 is too flakey when the interrupting tap is pressed close to the hold */
+#define TAPPING_TERM_MS 180
 #define QUICK_TAP_MS 175
 
 #define SCRNSVR K_SCREENSAVER
@@ -39,7 +41,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
             tapping-term-ms = <TAPPING_TERM_MS>;
             quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
@@ -50,7 +52,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            require-prior-idle-ms = <150>;
+            require-prior-idle-ms = <REQUIRE_PRIOR_IDLE_MS>;
             tapping-term-ms = <TAPPING_TERM_MS>;
             quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
