@@ -36,3 +36,5 @@ west build -p -d build/reset -s zmk/app -b nice_nano_v2 -- -DSHIELD="settings_re
 ```
 
 The firmware is generated in `build/left/zephyr/zmk.uf2`, `build/right/zephyr/zmk.uf2` and `build/reset/zephyr/zmk.uf2`.
+
+In order to enable usb logging, pass the flag `-S zmk-usb-logging` to the west command. Monitor zmk logs using `tio /dev/ttyACM0`.
