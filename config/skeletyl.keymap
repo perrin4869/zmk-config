@@ -163,7 +163,7 @@
 
  /* Raise
  * ,---------------------------------------,                                  ,---------------------------------------,
- * | PGUP  | PGDN  |  up   |  DEL  |INSERT |                                  | HOME  |  END  | CAPS  |  F11  |  F12  |
+ * | PGUP  | PGDN  |  up   |  DEL  |INSERT |                                  | HOME  |  END  | MENU  |  F11  |  F12  |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
  * | PSCRN |  left |  down | right |SCRNSVR|                                  |   ?   |   [   |   ]   |   {   |   }   |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
@@ -175,7 +175,7 @@
 
         raise_layer {
             bindings = <
-    &kp PGUP       &kp PGDN       &kp  UP        &kp  DEL       &kp INSERT     &kp HOME       &kp END        &caps_word    &kp F11        &kp F12
+    &kp PGUP       &kp PGDN       &kp  UP        &kp  DEL       &kp INSERT     &kp HOME       &kp END        &kp K_MENU     &kp F11        &kp F12
     &hml LSHFT PSCRN&hml LALT LEFT&hml LGUI DOWN &hml LCTRL RIGHT&kp SCRNSVR   &kp QMARK      &hmr RCTRL LBKT&hmr RGUI RBKT &hmr LALT LBRC &hmr RSHFT RBRC
     &kp F1         &kp F2         &kp F3         &kp F4         &kp F5         &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
                                   &kp LALT       &trans         &kp LGUI       &mt LCTRL K_VOL_DN&lt LOWER K_MUTE&mt LCTRL K_VOL_UP
@@ -184,22 +184,22 @@
 
  /* Lower
  * ,---------------------------------------,                                  ,---------------------------------------,
- * |   =   |   +   |   -   |   _   |   ~   |                                  |   \   |   /   |   |   |   `   | RESET |
+ * |   =   |   +   |   -   |   _   |   ~   |                                  |   \   |   /   |   |   |   `   | CAPS  |
  * |-------+-------+-------+-------+-------|                                  |-------+-------+-------+-------+-------|
  * |   1   |   2   |   3   |   4   |   5   |                                  |   6   |   7   |   8   |   9   |   0   |
  * |-------+-------+-------+-------+-------|                                  |------ +-------+-------+-------+-------|
  * |   !   |   @   |   #   |   $   |   %   |                                  |   ^   |   &   |   *   |   (   |   )   |
  * '-------------------------------------------------------,  ,-------------------------------------------------------'
- *                                 | PREV  | PP    | NEXT  |  |       |       |       |
+ *                                 | PREV  | PP    | NEXT  |  | RESET |       | RESET |
  *                                 '-----------------------'  '-----------------------'
  */
 
         lower_layer {
             bindings = <
-    &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp TILDE      &kp BSLH       &kp FSLH       &kp PIPE        &kp GRAVE      &bootloader
+    &kp EQUAL      &kp PLUS       &kp MINUS      &kp UNDER      &kp TILDE      &kp BSLH       &kp FSLH       &kp PIPE        &kp GRAVE      &caps_word
     &hml LSHFT N1  &hml LALT N2   &hml LGUI N3   &hml LCTRL N4  &kp N5         &kp N6         &hmr RCTRL N7  &hmr RGUI N8    &hmr LALT N9   &hmr RSHFT N0
     &kp EXCL       &kp AT         &kp HASH       &kp DLLR       &kp PRCNT      &kp CARET      &kp AMPS       &kp ASTRK       &kp LPAR       &kp RPAR
-                                  &mt LALT K_PREV&lt RAISE K_PP &mt LGUI K_NEXT&kp RSHFT      &trans         &kp RCTRL
+                                  &mt LALT K_PREV&lt RAISE K_PP &mt LGUI K_NEXT&bootloader    &trans         &bootloader
             >;
         };
 
