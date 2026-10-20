@@ -7,9 +7,3 @@ updates:
           interval: daily
       assignees:
           - perrin4869
-    - package-ecosystem: gitsubmodule
-      directory: /
-      open-pull-requests-limit: 50
-      schedule:
-          # Check for updates to GitHub Actions every weekday
-          interval: weekly
